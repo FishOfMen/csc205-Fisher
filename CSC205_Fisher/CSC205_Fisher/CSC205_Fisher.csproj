@@ -208,8 +208,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FamiliesModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PeopleModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -274,11 +276,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Index\index.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\People\People.cshtml" />
-    <Content Include="Views\Profile\Profile.cshtml" />
-    <Content Include="Views\Families\Families.cshtml" />
-    <Content Include="Views\ChangePassword\ChangePassword.cshtml" />
+    <Content Include="Views\Login\index.cshtml" />
+    <Content Include="Views\People\index.cshtml" />
+    <Content Include="Views\Profile\index.cshtml" />
+    <Content Include="Views\Families\index.cshtml" />
+    <Content Include="Views\ChangePassword\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
