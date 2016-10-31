@@ -203,7 +203,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -278,9 +277,14 @@
     <Content Include="Views\Index\index.cshtml" />
     <Content Include="Views\Login\index.cshtml" />
     <Content Include="Views\People\index.cshtml" />
-    <Content Include="Views\Profile\index.cshtml" />
     <Content Include="Views\Families\index.cshtml" />
     <Content Include="Views\ChangePassword\index.cshtml" />
+    <Content Include="Views\People\Profile.cshtml" />
+    <Content Include="Views\People\create.cshtml" />
+    <Content Include="Views\Families\members.cshtml" />
+    <Content Include="Views\Families\create.cshtml" />
+    <Content Include="Views\People\edit.cshtml" />
+    <Content Include="Views\Families\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

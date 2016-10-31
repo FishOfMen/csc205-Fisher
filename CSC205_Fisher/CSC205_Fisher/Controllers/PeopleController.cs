@@ -4,11 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CSC205_Fisher.Models;
+using System.Web.Routing;
 
 namespace CSC205_Fisher.Controllers
 {
     public class PeopleController : Controller
     {
+
+        protected override void Initialize(RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+            if (Session["peopleList"] == null)
+            {
+                Session["peopleList"] = people;
+            }
+        }
 
         List<People> people;
 
@@ -32,10 +42,108 @@ namespace CSC205_Fisher.Controllers
             };
         }
 
+        
+
         // GET: People
         public ActionResult Index()
         {
             return View(people);
         }
+
+        // GET: Person/Profile/5
+        public ActionResult Profile(int id)
+        {
+            // Get the list of people from the session
+            var personList = (List<People>)Session["peopleList"];
+
+            // Get the person with the passed in ID
+            var p = personList[id];
+
+            // Return the person data to the view
+            return View(p);
+        }
+
+        // GET: People/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: People/create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                People person = new People()
+                {
+                    id = 99,
+                    firstname = collection["firstname"],
+                    middlename = collection["middlename"],
+                    lastname = collection["lastname"],
+                    cell = collection["cell"],
+                    relationship = collection["relationship"],
+                    familyId = int.Parse(collection["familyId"]
+                    )
+                };
+                
+                // Add a new person
+                people = (List<People>)Session["peopleList"];
+                people.Add(person);
+
+                //Save to list
+                Session["peopleList"] = people;
+
+                return RedirectToAction("index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Person/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: Person/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //// GET: Person/Delete/5
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
+
+        //// POST: Person/Delete/5
+        //[HttpPost]
+        //public ActionResult Delete(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

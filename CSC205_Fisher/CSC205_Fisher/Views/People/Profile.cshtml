@@ -1,0 +1,31 @@
+﻿@model CSC205_Fisher.Models.People
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profile</h2>
+
+<table>
+    <tr>
+        <th>First Name</th>
+        <td>@Model.firstname</td>
+    </tr>
+    <tr>
+        <th>Middle Initial</th>
+        <td>@Model.middlename</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>@Model.lastname</td>
+    </tr>
+    <tr>
+        <th>Cell Phone</th>
+        <td>@Model.cell</td>
+    </tr>
+    <tr>
+        <th>Family id</th>
+        <td>@Model.familyId</td>
+    </tr>
+</table>

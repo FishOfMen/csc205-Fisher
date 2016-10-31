@@ -8,6 +8,6 @@
 <ul>
     @foreach (var People in Model)
     {
-        <li>@People.firstname @People.middlename @People.lastname - @People.relationship</li>
+        <li><a href="/People/Profile/@People.id">@People.firstname @People.middlename @People.lastname</a> - @People.relationship -- <a href="/People/Edit/@People.id">Edit</a></li>
     }
 </ul>

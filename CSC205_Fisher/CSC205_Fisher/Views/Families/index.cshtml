@@ -6,13 +6,9 @@
 
 <h2>Families</h2>
 
-@*<p>
-    Select from @Model.Count()
-    families: 
-</p>*@
 <ul>
     @foreach (var families in Model)
     {
-        <li>@families.familyname @families.city, @families.state</li>
+        <li>@families.familyname @families.city, @families.state - <a href="/Families/Edit/@families.id">Edit</a></li>
     }
 </ul>
