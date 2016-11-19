@@ -9,6 +9,9 @@
 <ul>
     @foreach (var families in Model)
     {
-        <li>@families.familyname @families.city, @families.state - <a href="/Families/Edit/@families.id">Edit</a></li>
+        <li>@families.familyname @families.city, @families.state - <a href="/Families/Edit/@families.id">Edit</a> - <a href="/Families/Delete/@families.id">Delete</a></li>
     }
+    <div>
+        <p><a href="/Families/Create">Create New User</a></p>
+    </div>
 </ul>

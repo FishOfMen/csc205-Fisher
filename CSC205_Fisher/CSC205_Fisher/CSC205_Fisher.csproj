@@ -285,6 +285,7 @@
     <Content Include="Views\Families\create.cshtml" />
     <Content Include="Views\People\edit.cshtml" />
     <Content Include="Views\Families\edit.cshtml" />
+    <Content Include="Views\Families\delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

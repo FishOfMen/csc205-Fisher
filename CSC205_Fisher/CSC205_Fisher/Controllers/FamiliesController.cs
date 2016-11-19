@@ -39,12 +39,14 @@ namespace CSC205_Fisher.Controllers
         // GET: Families
         public ActionResult Index()
         {
-            return View(families);
+            var Fams = Session["familyList"] as List<Families>;
+            return View(Fams);
         }
 
         // GET: Families/Create
         public ActionResult Create()
         {
+            var Fams = Session["familyList"] as List<Families>;
             return View();
         }
 
@@ -52,11 +54,16 @@ namespace CSC205_Fisher.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
+            var Fams = Session["familyList"] as List<Families>;
+
             try
             {
+                //Random rand = new Random();
+                //int newid = rand.Next(5, 1000);
+
                 Families family = new Families()
                 {
-                    id = 99,
+                    id = Fams.Count(),
                     familyname = collection["familyname"],
                     address1 = collection["address1"],
                     city = collection["city"],
@@ -66,11 +73,11 @@ namespace CSC205_Fisher.Controllers
                 };
 
                 //Add new Family
-                families = (List<Families>)Session["familyList"];
-                families.Add(family);
+                Fams = (List<Families>)Session["familyList"];
+                Fams.Add(family);
 
                 //save family
-                Session["familyList"] = families;
+                Session["familyList"] = Fams;
 
                 return RedirectToAction("Index");
             }
@@ -90,16 +97,60 @@ namespace CSC205_Fisher.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+
             try
             {
-                // TODO: Add update logic here
+                
+                var Fams = (List<Families>)Session["familyList"];
+
+                var f = Fams[id];
+
+                Families newFam = new Families()
+                {
+                    id = f.id,
+                    familyname = collection["familyname"],
+                    address1 = collection["address1"],
+                    city = collection["city"],
+                    state = collection["state"],
+                    zip = collection["zip"],
+                    homephone = collection["homephone"]
+                };
+
+                Fams.Where(x => x.id == id).First().familyname = collection["familyname"];
+                Fams.Where(x => x.id == id).First().address1 = collection["address1"];
+                Fams.Where(x => x.id == id).First().city = collection["city"];
+                Fams.Where(x => x.id == id).First().state = collection["state"];
+                Fams.Where(x => x.id == id).First().zip = collection["zip"];
+                Fams.Where(x => x.id == id).First().homephone = collection["homephone"];
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Something Bad Happend");
             }
+        }
+
+        //POST: Families/Delete/
+        public ActionResult Delete(int id)
+        {
+            var Fams = (List<Families>)Session["familyList"];
+
+            var f = Fams[id];
+
+            Session["familyList"] = Fams.Where(x => x.id != id).ToList();
+
+            Fams = (List<Families>)Session["familyList"];
+
+            for (int x=id; x<Fams.Count(); x++)
+            {
+                if(Fams[x] != null)
+                {
+                    Fams[x].id = x;
+                }
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

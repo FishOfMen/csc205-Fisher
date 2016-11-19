@@ -47,7 +47,8 @@ namespace CSC205_Fisher.Controllers
         // GET: People
         public ActionResult Index()
         {
-            return View(people);
+            var Peeps = Session["peopleList"] as List<People>;
+            return View(Peeps);
         }
 
         // GET: Person/Profile/5
@@ -73,11 +74,14 @@ namespace CSC205_Fisher.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
+            var Peeps = Session["PeopleList"] as List<People>;
+
             try
             {
+
                 People person = new People()
                 {
-                    id = 99,
+                    id = Peeps.Count(),
                     firstname = collection["firstname"],
                     middlename = collection["middlename"],
                     lastname = collection["lastname"],
@@ -88,11 +92,11 @@ namespace CSC205_Fisher.Controllers
                 };
                 
                 // Add a new person
-                people = (List<People>)Session["peopleList"];
-                people.Add(person);
+                Peeps = (List<People>)Session["peopleList"];
+                Peeps.Add(person);
 
                 //Save to list
-                Session["peopleList"] = people;
+                Session["peopleList"] = Peeps;
 
                 return RedirectToAction("index");
             }
@@ -105,7 +109,10 @@ namespace CSC205_Fisher.Controllers
         // GET: Person/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var personList = (List<People>)Session["peopleList"];
+            var p = personList[id];
+
+            return View(p);
         }
 
         // POST: Person/Edit/5
@@ -115,6 +122,27 @@ namespace CSC205_Fisher.Controllers
             try
             {
                 // TODO: Add update logic here
+                var personList = (List<People>)Session["peopleList"];
+
+                var p = personList[id];
+
+                People newPerson = new People()
+                {
+                    id = id,
+                    firstname = collection["firstname"],
+                    middlename = collection["middlename"],
+                    lastname = collection["lastname"],
+                    cell = collection["cell"],
+                    relationship = collection["relationship"],
+                    familyId = int.Parse(collection["familyId"])
+                };
+
+                personList.Where(x => x.id == id).First().firstname = collection["firstname"];
+                personList.Where(x => x.id == id).First().middlename = collection["middlename"];
+                personList.Where(x => x.id == id).First().lastname = collection["lastname"];
+                personList.Where(x => x.id == id).First().cell = collection["cell"];
+                personList.Where(x => x.id == id).First().relationship = collection["relationship"];
+                personList.Where(x => x.id == id).First().familyId = int.Parse(collection["familyId"]);
 
                 return RedirectToAction("Index");
             }
@@ -124,26 +152,26 @@ namespace CSC205_Fisher.Controllers
             }
         }
 
-        //// GET: Person/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+        //POST: People/Delete/
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            var personList = (List<People>)Session["peopleList"];
 
-        //// POST: Person/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
+            var f = personList[id];
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            Session["peopleList"] = personList.Where(x => x.id != id).ToList();
+
+            personList = (List<People>)Session["peopleList"];
+
+            for(int x=id; x<personList.Count();x++)
+            {
+                if (personList[x] != null)
+                {
+                    personList[x].id = x;
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
