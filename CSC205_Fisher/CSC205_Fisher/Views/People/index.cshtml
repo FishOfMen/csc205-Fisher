@@ -3,6 +3,10 @@
     ViewBag.Title = "People";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<ul class="breadcrumb">
+    <li><a href="/Index/index">Home</a></li>
+    <li class="active">People</li>
+</ul>
 
 <h2>People</h2>
 <br />
@@ -32,4 +36,4 @@
         }
     </tbody>
 </table> 
-<a href="/People/create" class="btn btn-default">Create New Person</a>
+<a href="/People/create" class="btn btn-info">Create New Person</a>

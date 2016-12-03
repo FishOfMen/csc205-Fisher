@@ -3,6 +3,10 @@
     ViewBag.Title = "Families";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<ul class="breadcrumb">
+    <li><a href="/Index/index">Home</a></li>
+    <li class="active">Families</li>
+</ul>
 
 <h2>Families</h2>
 <br />
@@ -31,4 +35,4 @@
         }
     </tbody>
 </table>
-<a href="/Families/create" class="btn btn-default">Create New Family</a> 
+<a href="/Families/create" class="btn btn-info">Create New Family</a> 

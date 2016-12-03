@@ -4,19 +4,22 @@
     ViewBag.Title = "create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>create</h2>
+<ul class="breadcrumb">
+    <li><a href="/Index/index">Home</a></li>
+    <li><a href="/Families/index">Families</a></li>
+    <li class="active">Create</li>
+</ul>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Families</h4>
-        <hr />
+        <h4>Create a New Family</h4>
+        <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.familyname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="familyname" class="col-lg-2 control-label">Family Name</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.familyname, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.familyname, "", new { @class = "text-danger" })
@@ -24,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.address1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="address1" class="col-lg-2 control-label">Street</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.address1, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.address1, "", new { @class = "text-danger" })
@@ -32,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.city, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="city" class="col-lg-2 control-label">City</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
@@ -40,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="state" class="col-lg-2 control-label">State</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
@@ -48,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.zip, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="zip" class="col-lg-2 control-label">Zip</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.zip, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.zip, "", new { @class = "text-danger" })
@@ -56,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.homephone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="homephone" class="col-lg-2 control-label">Home Phone</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.homephone, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.homephone, "", new { @class = "text-danger" })
@@ -65,12 +68,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create Family" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="/Families/index" class="btn btn-info">Back to Families List</a>
 </div>

@@ -4,28 +4,36 @@
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<ul class="breadcrumb">
+    <li><a href="/Index/index">Home</a></li>
+    <li><a href="/People/index">People</a></li>
+    <li class="active">Profile</li>
+</ul>
 
 <h2>Profile</h2>
 
-<table>
-    <tr>
-        <th>First Name</th>
-        <td>@Model.firstname</td>
-    </tr>
-    <tr>
-        <th>Middle Initial</th>
-        <td>@Model.middlename</td>
-    </tr>
-    <tr>
-        <th>Last Name</th>
-        <td>@Model.lastname</td>
-    </tr>
-    <tr>
-        <th>Cell Phone</th>
-        <td>@Model.cell</td>
-    </tr>
-    <tr>
-        <th>Family id</th>
-        <td>@Model.familyId</td>
-    </tr>
-</table>
+<div class="panel panel-default">
+    <div class="panel-heading">Name</div>
+    <div class="panel-body">
+        @Model.firstname @Model.middlename @Model.lastname
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Phone Number</div>
+    <div class="panel-body">
+        @Model.cell
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Family Information</div>
+    <div class="panel-body">
+        Family ID: @Model.familyId
+    </div>
+</div>
+
+<div>
+    <a href="/People/index" class="btn btn-info">Back to People List</a>
+</div>
+

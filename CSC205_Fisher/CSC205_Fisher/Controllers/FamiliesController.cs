@@ -46,7 +46,6 @@ namespace CSC205_Fisher.Controllers
         // GET: Families/Create
         public ActionResult Create()
         {
-            var Fams = Session["familyList"] as List<Families>;
             return View();
         }
 
@@ -58,9 +57,6 @@ namespace CSC205_Fisher.Controllers
 
             try
             {
-                //Random rand = new Random();
-                //int newid = rand.Next(5, 1000);
-
                 Families family = new Families()
                 {
                     id = Fams.Count(),

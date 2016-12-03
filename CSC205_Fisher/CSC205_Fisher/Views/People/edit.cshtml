@@ -4,21 +4,24 @@
     ViewBag.Title = "edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>edit</h2>
+<ul class="breadcrumb">
+    <li><a href="/Index/index">Home</a></li>
+    <li><a href="/People/index">People</a></li>
+    <li class="active">Edit</li>
+</ul>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>People</h4>
-        <hr />
+        <h4>Edit Information for @Model.firstname</h4>
+        <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="@Model.firstname" class="control-label col-md-2">First Name</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
@@ -26,7 +29,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.middlename, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="@Model.middlename" class="control-label col-md-2">Middle Name</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.middlename, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.middlename, "", new { @class = "text-danger" })
@@ -34,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="@Model.lastname" class="control-label col-md-2">Last Name</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
@@ -42,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.cell, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="@Model.cell" class="control-label col-md-2">Cell Phone</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.cell, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.cell, "", new { @class = "text-danger" })
@@ -50,7 +53,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.relationship, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="@Model.relationship" class="control-label col-md-2">Relationship</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.relationship, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.relationship, "", new { @class = "text-danger" })
@@ -58,7 +61,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.familyId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="@Model.familyId" class="control-label col-md-2">Family ID</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.familyId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.familyId, "", new { @class = "text-danger" })
@@ -67,12 +70,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save Person" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="/People/index" class="btn btn-info">Back to People List</a>
 </div>
