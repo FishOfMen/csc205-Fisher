@@ -281,7 +281,6 @@
     <Content Include="Views\ChangePassword\index.cshtml" />
     <Content Include="Views\People\Profile.cshtml" />
     <Content Include="Views\People\create.cshtml" />
-    <Content Include="Views\Families\members.cshtml" />
     <Content Include="Views\Families\create.cshtml" />
     <Content Include="Views\People\edit.cshtml" />
     <Content Include="Views\Families\edit.cshtml" />

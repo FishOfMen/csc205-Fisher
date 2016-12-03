@@ -87,13 +87,15 @@ namespace CSC205_Fisher.Controllers
             }
         }
 
-        // GET: Families/Edit/5
+        // GET: Families/Edit
         public ActionResult Edit(int id)
         {
-            return View();
+            var Fams = (List<Families>)Session["familyList"];
+            var f = Fams[id];
+            return View(f);
         }
 
-        // POST: Families/Edit/5
+        // POST: Families/Edit
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {

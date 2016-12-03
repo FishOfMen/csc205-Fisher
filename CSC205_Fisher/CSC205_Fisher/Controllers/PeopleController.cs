@@ -106,7 +106,7 @@ namespace CSC205_Fisher.Controllers
             }
         }
 
-        // GET: Person/Edit/5
+        // GET: Person/Edit
         public ActionResult Edit(int id)
         {
             var personList = (List<People>)Session["peopleList"];
@@ -115,7 +115,7 @@ namespace CSC205_Fisher.Controllers
             return View(p);
         }
 
-        // POST: Person/Edit/5
+        // POST: Person/Edit
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {

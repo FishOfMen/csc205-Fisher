@@ -5,13 +5,30 @@
 }
 
 <h2>Families</h2>
-
-<ul>
-    @foreach (var families in Model)
-    {
-        <li>@families.familyname @families.city, @families.state - <a href="/Families/Edit/@families.id">Edit</a> - <a href="/Families/Delete/@families.id">Delete</a></li>
-    }
-    <div>
-        <p><a href="/Families/Create">Create New User</a></p>
-    </div>
-</ul>
+<br />
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr class="success">
+            <th>Id</th>
+            <th>Name</th>
+            <th>City</th>
+            <th colspan="2">State</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fam in Model)
+        {
+            <tr>
+                <td>@fam.id</td>
+                <td>@fam.familyname</td>
+                <td>@fam.city</td>
+                <td>@fam.state</td>
+                <td>
+                    <a href="/Families/Edit/@fam.id" class="btn btn-warning btn-xs">Edit</a>
+                    <a href="/families/Delete/@fam.id" class="btn btn-danger btn-xs">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Families/create" class="btn btn-default">Create New Family</a> 
