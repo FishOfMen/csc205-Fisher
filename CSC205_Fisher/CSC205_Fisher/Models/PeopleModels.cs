@@ -1,4 +1,6 @@
-﻿namespace CSC205_Fisher.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CSC205_Fisher.Models
 {
     public class People
     {
